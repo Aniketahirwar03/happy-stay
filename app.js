@@ -38,17 +38,17 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 const databaseUrl = process.env.MONGODB_URL;
 
-const store = MongoStore.create({
-    mongoUrl: databaseUrl,
-    touchAfter: 24 * 60 * 60, // time period in seconds
-    crypto: {
-        secret: process.env.SECRET || "default-secret",
-    },
-});
+// const store = MongoStore.create({
+//     mongoUrl: databaseUrl,
+//     touchAfter: 24 * 60 * 60, // time period in seconds
+//     crypto: {
+//         secret: process.env.SECRET || "default-secret",
+//     },
+// });
 
 // express-session parameters.
 const sessionOptions = {
-    store: store,
+    // store: store,
     secret: process.env.SECRET || "default-secret",
     resave: false,
     saveUninitialized: true,
