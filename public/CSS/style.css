@@ -1,0 +1,240 @@
+
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0%;
+  padding: 0%;
+}
+
+#map {
+  height: 50vh;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Navbar */
+
+nav{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  /* background-color: #f32b50; */
+  box-shadow: 0 0 0.1rem 0.1rem lightgray;
+  height: 5rem;
+}
+
+
+.search-box-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+} */
+
+.search-box-content input[type="search"] {
+  border-radius: 1.25rem;
+  width: 100%;
+  border: 1px solid lightgray;
+  font-size: .8rem;
+  padding: 0.5rem 1rem;
+}
+
+.search-box-content button[type="submit"] {
+  width: 5rem;
+  border-radius: 1.25rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: .8rem;
+  color: white;
+  background-color: #fe3859;
+}
+
+.brand-container {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.brand-container i {
+  color: #fe385c;
+  font-size: 2rem;
+}
+.brand-container a {
+  color: rgb(18, 17, 17);
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.user-operations{
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.extra-btn{
+  font-size: 1.5rem;
+}
+
+.extra-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 0 0.5rem !important;
+  gap: 3rem;
+}
+
+.container-fluid{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-fluid span {
+font-size: 1.25rem;
+margin-left:4rem;
+}
+.container-fluid button i{
+  font-size: 1.25rem;
+}
+
+.dropdown-menu{
+  background-color: #fe3859 !important;
+}
+.dropdown-menu li a:hover{
+  border-radius: 0.25rem;
+  background-color: #ff385c !important;
+  color: white !important;
+  background-color: #e5425ccc !important;
+  box-shadow:
+    0 4px 8px rgba(235, 72, 72, 0.2),
+    0 8px 16px rgba(205, 88, 88, 0.15),
+    inset 0 -2px 4px #d7d7d7cf !important;
+}
+
+.foot-info {
+  display: flex;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebebeb;
+  height: auto;
+  text-align: center;
+  padding: 1rem 0 1.5rem;
+}
+
+.foot-info-socials,
+.foot-info-links {
+  width: 100%;
+}
+
+.foot-info-socials i {
+  font-size: 1.25rem;
+  margin: 0.5rem;
+}
+
+.foot-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.foot-info-links a:hover {
+  text-decoration: underline;
+}
+
+/* Cards */
+.listing-link {
+  text-decoration: none;
+}
+
+.listing-card {
+  border: none !important;
+  margin: 0 0.75rem 1rem;
+  padding: 0;
+}
+
+.card-img-top {
+  border-radius: 0.75rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text {
+  font-weight: 600 !important;
+}
+
+.card-text span {
+  font-weight: normal !important;
+}
+
+/* Card Overlay Effect on Card */
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.25;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Add New Listing Form */
+.add-new-listing-btn {
+  background-color: #ff385c !important;
+}
+
+/* Edit Listing Form */
+.edit-listing-btn {
+  background-color: #ff385c !important;
+}
+
+/* Show Listing Page */
+.show-img {
+  height: 30dvh;
+}
+
+
+/* --------  MEDIA QUERIES  -------- */
+
+@media (max-width: 800px) {
+  nav {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .user-operations {
+    /* justify-content: right; */
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    padding: 0.3rem;
+    /* flex-direction: row-reverse; */
+  }
+
+  .user-operations {
+    display: none;
+  }
+
+  .brand-container a {
+
+    display: none;
+  }
+  .extra-btn{ 
+    display: block !important;
+    width: 100% !important;
+   
+  } 
+}

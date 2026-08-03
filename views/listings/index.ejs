@@ -1,0 +1,65 @@
+<% layout("layouts/boilerplate") %>
+
+<body>
+    <!-- Filter Section -->
+    <div class="filters-container">
+      <div class="filter">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <small>Amazing Views</small>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-fire"></i>
+        <small>Tranding</small>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-mug-hot"></i>
+        <small>Bed & Breakfasts</small>
+      </div>
+      <div class="filter">
+        <i class="fa-regular fa-snowflake"></i>
+        <small>Arctic</small>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-campground"></i>
+        <small>Capmping</small>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-person-swimming"></i>
+        <small>Amazing Pools</small>
+      </div>
+      <div class="filter">
+        <i class="fa-brands fa-fort-awesome"></i>
+        <small>Castles</small>
+      </div>
+      <!-- Tax Switch Section -->
+
+      <div class=" filter form-check form-switch ml-2">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" onclick="taxSwitchToggle()">
+        <label class="form-check-label" for="switchCheckDefault">switch see additional options</label>
+      </div>
+    </div>
+
+
+  <!-- All Listing Section -->
+  <div class="card-container row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for (let listing of listings) { %>
+
+    <!-- Making clickable card by wrapping in side anchor tag. -->
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col listing-card" style="width: 18.5rem">
+        <img src=" <%= listing.image.url %>" class="card-img-top" alt="Card Image" style="height: 15rem" />
+
+        <!-- Overlay Effect on Card -->
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <h6 class="card-title"><%= listing.title %></h6>
+          <p class="card-text">
+            &#8377;<%= listing.price.toLocaleString("en-IN") %><span> per guest</span>
+            <small><i class="tax-info">&nbsp;&nbsp;&nbsp;&nbsp;+18% GST</i></small>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+</body>
