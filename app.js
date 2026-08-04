@@ -36,19 +36,20 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-const databaseUrl = process.env.MONGODB_URL;
+const databaseUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/explore-hut";
 
-const store = MongoStore.create({
+const sessionStore = MongoStore.create({
     mongoUrl: databaseUrl,
     touchAfter: 24 * 60 * 60, // time period in seconds
     crypto: {
         secret: process.env.SECRET || "default-secret",
     },
+    collectionName: "sessions",
 });
 
 // express-session parameters.
 const sessionOptions = {
-    store: store,
+    store: sessionStore,
     secret: process.env.SECRET || "default-secret",
     resave: false,
     saveUninitialized: true,
