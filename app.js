@@ -38,18 +38,29 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 // const databaseUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/explore-hut";
 
+<<<<<<< HEAD
 // const sessionStore = MongoStore.create({
+=======
+// const store = MongoStore.create({
+>>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
 //     mongoUrl: databaseUrl,
 //     touchAfter: 24 * 60 * 60, // time period in seconds
 //     crypto: {
 //         secret: process.env.SECRET || "default-secret",
 //     },
+<<<<<<< HEAD
 //     collectionName: "sessions",
+=======
+>>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
 // });
 
 // express-session parameters.
 const sessionOptions = {
+<<<<<<< HEAD
     // store: sessionStore,
+=======
+    // store: store,
+>>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
     secret: process.env.SECRET || "default-secret",
     resave: false,
     saveUninitialized: true,
