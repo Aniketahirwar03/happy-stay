@@ -36,31 +36,19 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-// const databaseUrl = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/explore-hut";
+const databaseUrl = process.env.MONGODB_URL;
 
-<<<<<<< HEAD
-// const sessionStore = MongoStore.create({
-=======
 // const store = MongoStore.create({
->>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
 //     mongoUrl: databaseUrl,
 //     touchAfter: 24 * 60 * 60, // time period in seconds
 //     crypto: {
 //         secret: process.env.SECRET || "default-secret",
 //     },
-<<<<<<< HEAD
-//     collectionName: "sessions",
-=======
->>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
 // });
 
 // express-session parameters.
 const sessionOptions = {
-<<<<<<< HEAD
-    // store: sessionStore,
-=======
     // store: store,
->>>>>>> 82c87bf13c6833219cad57c1a21f921d6baeaf2b
     secret: process.env.SECRET || "default-secret",
     resave: false,
     saveUninitialized: true,
@@ -128,35 +116,33 @@ function startServer(currentPort = defaultPort) {
     });
 }
 
- startServer();
+async function main() {
+    try {
+        await mongoose.connect(databaseUrl, {
+            serverSelectionTimeoutMS: 10000,
+            socketTimeoutMS: 45000,
+        });
+        console.log("Database connected.");
+        startServer();
+    } catch (err) {
+        console.error("MongoDB connection failed:", err.message);
+        if (databaseUrl.includes("mongodb+srv")) {
+            console.error("Atlas connection failed. Verify the username/password in the URI and ensure your current IP is allowed in Atlas Network Access.");
+        }
+        console.error("Falling back to local MongoDB at mongodb://127.0.0.1:27017/explore-hut");
+        try {
+            await mongoose.connect("mongodb://127.0.0.1:27017/explore-hut", {
+                serverSelectionTimeoutMS: 10000,
+                socketTimeoutMS: 45000,
+            });
+            console.log("Database connected locally.");
+            startServer();
+        } catch (localErr) {
+            console.error("Local MongoDB connection also failed:", localErr.message);
+            process.exit(1);
+        }
+    }
+}
 
-// async function main() {
-//     try {
-//         await mongoose.connect(databaseUrl, {
-//             serverSelectionTimeoutMS: 10000,
-//             socketTimeoutMS: 45000,
-//         });
-//         console.log("Database connected.");
-//         startServer();
-//     } catch (err) {
-//         console.error("MongoDB connection failed:", err.message);
-//         if (databaseUrl.includes("mongodb+srv")) {
-//             console.error("Atlas connection failed. Verify the username/password in the URI and ensure your current IP is allowed in Atlas Network Access.");
-//         }
-//         console.error("Falling back to local MongoDB at mongodb://127.0.0.1:27017/explore-hut");
-//         try {
-//             await mongoose.connect("mongodb://127.0.0.1:27017/explore-hut", {
-//                 serverSelectionTimeoutMS: 10000,
-//                 socketTimeoutMS: 45000,
-//             });
-//             console.log("Database connected locally.");
-//             startServer();
-//         } catch (localErr) {
-//             console.error("Local MongoDB connection also failed:", localErr.message);
-//             process.exit(1);
-//         }
-//     }
-// }
-
-// main();
+main();
 
