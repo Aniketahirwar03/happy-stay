@@ -1,63 +1,6 @@
-<!-- <nav class="navbar navbar-expand-md bg-light border-bottom sticky-top ">
-  <a class="navbar-brand mx-4" href="/listings"><i class="fa-regular fa-compass"></i></a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav fw-bold">
-      <a class="nav-link" href="/listings">Explore</a>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="navbar-nav search-bar">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 search-box" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success search-btn" type="submit">Search</button>
-      </form>
-    </div>
-
-    <div class="navbar-nav fw-bold ms-auto">
-      
-    </div>
-  </div>
-</nav> -->
-
-
-<!-- <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-4" href="/listings"><i class="fa-regular fa-compass"></i></a>
-
-    <div class="navbarNavAltMarkup collapse navbar-collapse">
-
-
-
-      <a class="nav-link fw-bold" id="navbarNavAltMarkup" href="/listings">Explore</a>
-
-      <div class="navbar-nav search-bar">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-box" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success search-btn" type="submit">Search</button>
-        </form>
-      </div>
-
-      <div class="navbar-nav fw-bold ms-auto">
-        
-      </div>
-
-    </div>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav> -->
-
-<nav>
+<nav class="navbar sticky-top bg-light border-bottom mb-3">
   <div class="brand-container">
-    <i class="fa-regular fa-compass"></i>
+    <a href="/listings"><i class=" fa-regular fa-compass"></i></a>
     <a href="/listings">Explore</a>
   </div>
 
@@ -68,49 +11,53 @@
     </form>
   </div>
 
-  <div class="user-operations">
-    <% const user = typeof currentUser !== "undefined" ? currentUser : null; %>
-    <a class="nav-link" href="/listings/new">Add Your hotel</a>
-    <% if (!user) { %>
-    <a class="nav-link" href="/signup">Sign Up</a>
-    <a class="nav-link" href="/login">Log In</a>
-    <% } else { %>
-    <a class="nav-link" href="/logout">Log Out</a>
-    <% } %>
+  <div class="user-container">
+    <div class="user-operations d-flex gap-3">
+      <% const user = typeof currentUser !== "undefined" ? currentUser : null; %>
+      <a class="nav-link" href="/listings/new">Add Your hotel</a>
+      <% if (!user) { %>
+      <a class="nav-link" href="/signup">Sign Up</a>
+      <a class="nav-link" href="/login">Log In</a>
+      <% } else { %>
+      <a class="nav-link" href="/logout">Log Out</a>
+      <% } %>
+    </div>
+    <button class="extra-btn navbar-toggler p-1.25" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fs-6 fa-solid fa-bars"></i>
+    </button>
   </div>
+
 
   <div class="collapse extra-options list-unstyled" id="navbarToggleExternalContent" data-bs-theme="dark">
-
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Category
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Amazing Views</a></li>
-        <li><a class="dropdown-item" href="#">Tranding</a></li>
-        <li><a class="dropdown-item" href="#">Bed & Breakfasts</a></li>
-        <li><a class="dropdown-item" href="#">Arctic</a></li>
-        <li><a class="dropdown-item" href="#">Campground</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="#">search by url in search box</a></li>
-      </ul>
-    </li>
-    <a class="nav-link" href="/listings/new">Add Your hotel</a>
-    <% const activeUser = typeof currentUser !== "undefined" ? currentUser : null; %>
-    <% if (!activeUser) { %>
-    <a class="nav-link" href="/signup">Sign Up</a>
-    <a class="nav-link" href="/login">Log In</a>
-    <% } else { %>
-    <a class="nav-link" href="/logout">Log Out</a>
-    <% } %>
+    <div class="d-flex fs-6 gap-5 items-center justify-content-between">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Amazing Views</a></li>
+          <li><a class="dropdown-item" href="#">Tranding</a></li>
+          <li><a class="dropdown-item" href="#">Bed & Breakfasts</a></li>
+          <li><a class="dropdown-item" href="#">Arctic</a></li>
+          <li><a class="dropdown-item" href="#">Campground</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="#">search by url in search box</a></li>
+        </ul>
+      </li>
+      <div class="d-flex gap-4">
+        <% const activeUser = typeof currentUser !== "undefined" ? currentUser : null; %>
+        <% if (!activeUser) { %>
+          <a class="nav-link" href="/signup">Sign Up</a>
+          <a class="nav-link" href="/login">Log In</a>
+          <% } else { %>
+            <a class="nav-link" href="/listings/new">Add Your hotel</a>
+            <a class="nav-link" href="/logout">Log Out</a>
+        <% } %>
+      </div>
+    </div>
   </div>
 
-  <section class="container-fluid d-none w-[0] extra-btn">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <span>Welcome To Stay-Home</span>
-  </section>
+
 </nav>
